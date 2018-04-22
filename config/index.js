@@ -10,7 +10,16 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/api':{
+        target: 'http://127.0.0.1:3000/api/',
+        // changeOrigin参数接收一个布尔值，如果为true，这样就不会有跨域问题了
+        changeOrigin:true,
+        pathRewrite:{
+            '^/api':''
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
